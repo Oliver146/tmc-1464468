@@ -2,45 +2,121 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-class Program 
+ 
+
+class Program
 {
-    static void Main()
+    public static void Main(string[] args)
     {
-       //create array or months of the year
-       string[] months = new string[12]       
-       {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-       //initialise prng with a time-dependant default seed value
-       Random rnd = new Random();
+        string[] months = new string[12]
+        {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"};
 
-       // will create a number between 1 and 12
-       int month = rnd.Next(1,13);
+ 
 
-       //output the random month name
-       Console.WriteLine("Month is {0}", months[month-1]);
-       RangeTest();
-   
+        Random rnd = new Random();
+
+ 
+
+        int month = rnd.Next(1, 13);
+
+ 
+
+        Console.WriteLine("Month is {0}", months[month - 1]);
+        RangeTest();
+        RoundTest();
+        TruncateTest();
+        GetLengthOfString("Oliver Fitzpatrick");
+        GetCharOfString("Oliver Fitzpatrick", 5);
     }
 
-      public static void RangeTest() {
+ 
+
+    public static void RangeTest()
+    {
         IEnumerable<int> squares = Enumerable.Range(1, 10).Select(x => x * x);
 
-      foreach (int num in squares) {
-        Console.WriteLine(num); 
-      
-      }
-      }
+ 
+
+        foreach (int num in squares)
+        {
+            Console.WriteLine(num);
+        }
     }
-   /*
-   This code produces the following output:
-      
-   1
-   4
-   9
-   16
-   25
-   36
-   49
-   64
-   81
-  100
-*/
+
+ 
+
+    public static void RoundTest()
+    {
+        float originalNumber1 = 1.23f;
+        float originalNumber2 = 3.15f;
+        float originalNumber3 = 1.9f;
+
+ 
+
+        float roundedNumber1 = (float)Math.Ceiling(originalNumber1);
+        float roundedNumber2 = (float)Math.Round(originalNumber2, 1);
+        float roundedNumber3 = (float)Math.Floor(originalNumber3);
+
+ 
+
+        Console.WriteLine("roundedNumber1 is " + roundedNumber1);
+        Console.WriteLine("roundedNumber2 is " + roundedNumber2);
+        Console.WriteLine("roundedNumber3 is " + roundedNumber3);
+    }
+
+ 
+
+    public static void TruncateTest()
+    {
+
+ 
+
+        decimal decimalNumber;
+
+ 
+
+        decimalNumber = 32.7865m;
+
+ 
+
+        Console.Write(Math.Truncate(decimalNumber));
+
+ 
+
+        decimalNumber = -32.9012m;
+
+ 
+
+        Console.WriteLine(Math.Truncate(decimalNumber));
+
+ 
+
+    }
+
+ 
+
+    public static void GetLengthOfString(string str)
+    {
+        int length;
+
+ 
+
+        length = str.Length;
+        Console.WriteLine("{0} is {1} characters long", str, length);
+    }
+
+ 
+
+    public static void GetCharOfString(string str, int i)
+    {
+        char singleLetter;
+
+ 
+
+        singleLetter = str[i];
+        Console.WriteLine("Character {0} of {1} is {2}", i, str, singleLetter);
+
+ 
+
+    }
+}
